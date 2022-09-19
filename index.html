@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App de Presupuestos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/bootstrap.css">
+    <link rel="stylesheet" href="./styles/bootstrap.css.map">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <script src="https://kit.fontawesome.com/ddef00655d.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="py-4 container-lg" id="header">
+        <h1 class="tittle m-5 fs-md-1">Crea tu Presupuesto!</h1>
+        <div class="container-lg">
+            <form id="form-data" class="row d-flex align-items-center gap-4 flex-column" action="">
+                <div class="col p-2">
+                    <input type="text" name="" id="nombreEmpresa" class="form-presupuesto__input form-control m-auto"  placeholder="Nombre de la Empresa" required>
+                </div>
+                <div class="col p-2">
+                    <input type="text" name="" id="nombrePresupuesto" class="form-presupuesto__input form-control m-auto" placeholder="Nombre del Presupuesto" required>
+                </div>
+                <div class="col p-2">
+                    <input type="number" name="" id="numeroPresupuesto" class="form-presupuesto__input form-control m-auto" placeholder="N° del presupuesto" required>
+                </div>
+                <div class="col p-2 d-flex justify-content-center gap-2">
+                    <label for="startDate" class="form-label fw-bolder text-center" style="font-size: 25px;">Fecha de Inicio:</label>
+                    <input type="date" id="startDate" name="trip-start" value="2018-07-22" min="2000-01-01" max="2023-01-01" class="fs-3" required>
+                </div>
+                <div class="col p-2 d-flex justify-content-center">
+                    <input type="submit" value ="Crear" class="btn-submit btn btn-lg p-2 fs-4">
+                </div>
+            </form>
+        </div>
+    </header>
+    <main class="container-fluid d-none my-4 py-4" id="main">
+        <div class="data row m-1" id="data">
+            <div class="rotulo container p-3 my-4" id="rotulo"></div>
+            <div class="presentacion container p-0 my-4">
+                <div class="gap-2 d-flex justify-content-end m-3" role="group">
+                    <button type="button" class="btn btn-outline-success" id="btnAddColumn"><i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-danger" id="btndeleteColumn"><i class="fa-solid fa-chevron-up"></i></button>
+                </div>
+                <form action="" id="formPresupuesto" class="form-presupuesto row m-0">
+                        <div class="form-presupuesto__item col-1 px-1" id="item">
+                            <p class="form-presupuesto__title fw-bolder py-3 m-0 text-center">Item</p>
+                            <div class="InputContainer my-3">
+                                <input style="width: 100%;" type="number" class="item__input form-control" placeholder="1,2,3..." required>
+                            </div>
+                        </div>
+                        <div class="form-presupuesto__item col-1 px-1" id="cantidad">
+                            <p class="form-presupuesto__title fw-bolder py-3 m-0 text-center">Cantidad</p>
+                            <div class="InputContainer my-3">
+                                <input style="width: 100%;" class ="quantity__input form-control" type="number" placeholder='cantidad de "unidades" a cubrir' required>
+                            </div>
+                        </div>
+                        <div class="form-presupuesto__item col-1 px-1" id="unidad">
+                            <p class="form-presupuesto__title fw-bolder py-3 m-0 text-center">Unidad</p>
+                            <div class="InputContainer my-3">
+                                <input style="width: 100%;" type="text" class="unit__input form-control" placeholder="ej: mt2" required>
+                            </div> 
+                        </div>
+                        <div class="form-presupuesto__item col-5 px-1" id="descripcion">
+                            <p class="form-presupuesto__title fw-bolder py-3 m-0 text-center">Descripcion</p>
+                            <div class="InputContainer my-3">
+                                <input style="width: 100%;" type="text" class="description__input form-control" placeholder="Descripción de la tarea" required>
+                            </div>
+                        </div>
+                        <div class="form-presupuesto__item col-2 px-1" id="precioUnit">
+                            <p class="form-presupuesto__title fw-bolder py-3 m-0 text-center">Precio Unitario</p>
+                            <div class="InputContainer my-3">
+                                <input style="width: 100%;" class ="unit-price__input form-control" type="number" placeholder="$unidad" required>
+                            </div>
+                        </div>
+                        <div class="form-presupuesto__item col-2 px-1" id="precioTotal">
+                            <p class="form-presupuesto__title fw-bolder py-3 m-0 text-center">Precio Total</p>
+                            <div class="InputContainer my-3">
+                                <p class="form-presupuesto__text text-center resultado">xxxx</p>
+                            </div>
+                        </div>
+                        <!--segunda fila del formulario-->
+                        <div class="col-10">
+                            <p class="form-presupuesto__title fw-bolder text-dark text-end">Subtotal</p>
+                        </div>
+                        <div class="col-2">
+                            <p class="form-presupuesto__text text-center resultado" id="subtotal">xxxx</p>
+                        </div>
+                        
+                            <div class="col-8">
+                                <p class="form-presupuesto__title fw-bolder text-dark text-end">impuestos</p>
+                            </div>
+                            <div class="col-2 InputContainer">
+                                <input id="tax__input" style="width: 100%;" class="form-control" type="number" required placeholder="%">
+                            </div>
+                            <div class="col-2 ">
+                                <p id="masimpuestos" class="form-presupuesto__text text-center resultado">xxxx</p>
+                            </div>
+                        
+                            <div class="col-10">
+                                <p class="form-presupuesto__title fw-bolder text-dark text-end">Total</p>
+                            </div>
+                            <div class="col-2">
+                                <p id="total" class="form-presupuesto__title text-dark fw-bolder text-center text-center">xxx2</p>
+                            </div>
+                        
+                        <div class="btnContainer d-grid gap-2 shadow">
+                            <input type="submit" value ="calcular" class="btn btn-dark fw-bolder fs-5 calcular" id="btnCalcular">
+                            <button id="imprimir" disabled class="btn btn-outline-dark fs-5 fw-bolder" onclick="window.print()">Imprimir</button>
+                        </div>
+                </form>
+            </div>
+    </div>
+    </main>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="./indexjs/app.js"></script>
+</body>
+</html>
