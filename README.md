@@ -1,1 +1,2 @@
 # App-Budget
+Este es un proyecto que esta realizado con html, css, bootstrap y javascript Vanilla, su proposito es ayudar a las personas a crear su propios presupuesto para el trabajo. Con respecto a como esta construida esta web, basicamente utiliza dos formulario html para obtener la informacion para luego presentarla en un layout formal, por ultimo el procesado de la informacion es realizado desde javascript con metodos como el destructuring, eventos, modulos, entre otros. Comparte esta aplicacion si te ayudo... Saludos y bye ;)  
